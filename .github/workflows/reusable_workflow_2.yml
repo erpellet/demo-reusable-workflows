@@ -1,0 +1,42 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Chained workflow 2
+
+# Controls when the workflow will run
+on:
+  workflow_call:
+    inputs:
+      version:
+        description: 'Version tag used for the deployment'
+        default: 'v0.0.0'
+        required: true
+        type: string
+    secrets:
+      credentials:
+        description: 'A secret containing credentials'
+        required: false
+
+
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  job_workflow_2:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      - uses: actions/checkout@v2
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        env:
+          CREDENTIALS: ${{ secrets.credentials }}
+        run: |
+          echo "I was triggered by 'workflow_call' event"
+          echo "deployment version: ${{ inputs.version }}"
+          echo "Credentials were passed as secret: $CREDENTIALS"
+          echo "... the secret value is actually: $(echo $CREDENTIALS | jq '.value')"
+          echo
+          echo "Checking if file was cloned..."
+          cat ./this_is_my_code.txt
