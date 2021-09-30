@@ -18,7 +18,7 @@ on:
 jobs:
   calling-workflow-1:
     name: Calling workflow 1
-    uses: erpellet/demo-reusable-workflows/.github/workflows/reusable_workflow_1.yml@v1.0
+    uses: erpellet/demo-reusable-workflows/.github/workflows/reusable_workflow_1.yml@main
     with:
       version: 'v2.1.4'
     secrets:
@@ -27,7 +27,7 @@ jobs:
   calling-workflow-2:
     name: Calling workflow 2
     needs: [calling-workflow-1]
-    uses: erpellet/demo-reusable-workflows/.github/workflows/reusable_workflow_2.yml@v1.0
+    uses: erpellet/demo-reusable-workflows/.github/workflows/reusable_workflow_2.yml@main
     with:
       version: 'v2.1.4'
     secrets:
