@@ -6,7 +6,6 @@ name: workflowcall branch launcher workflow
 on:
   push:
     branches:
-      - main
       - workflowcall
     
   # Allows you to run this workflow manually from the Actions tab
