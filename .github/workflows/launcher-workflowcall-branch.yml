@@ -25,7 +25,7 @@ jobs:
 
   calling-workflow-2:
     name: Calling workflow 2
-    needs: [calling-workflow1]
+    needs: [calling-workflow-1]
     uses: erpellet/demo-reusable-workflows/.github/workflows/reusable_workflow_2.yml@workflowcall
     with:
       version: 'v2.1.4'
