@@ -35,6 +35,7 @@ jobs:
       - name: Run a multi-line script
         run: |
           echo "I was triggered by 'workflow_call' event"
+          echo "This is a new version of the workflow, first updated and tested in branch 'feature-xyz'"
           echo "deployment version: ${{ inputs.version }}"
           echo "Credentials were passed as secret (Warning: this actually epxoses the secret!): ${{ secrets.credentials }}"
           echo
